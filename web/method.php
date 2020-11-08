@@ -11,6 +11,31 @@ function check_login($id,$pw){
     return $count;
 }
 
+function duplicate_check_id($id){
+
+    require_once('invest_db.php');
+    $select_query = "SELECT * FROM member where id='$id'";
+    $result_set = mysqli_query($conn, $select_query);
+    $count = mysqli_num_rows($result_set);
+    mysqli_close($conn);
+    return $count;
+}
+
+
+function enroll($id,$pw,$email){
+
+    require_once('invest_db.php');
+    $select_query="insert into member (id,pw,email,created) value ('$id','$pw','$email',NOW())";
+
+    $result = mysqli_query($conn, $select_query);
+    if($result === false){
+        return mysqli_error($conn);
+    
+    }else{
+        return "ok";
+    }
+   
+}
 
 //메인페이지가 호출되면 선형 그래프를 그리는데 호출된다.
 // type으로는 daum_kospi ,daum_kospi200,daum_kosdaq 이다
@@ -27,6 +52,7 @@ function get_stock_index($field){
     mysqli_close($conn);
     return $value_array;
 }
+
 function get_retention_rate($field){
     $value_array=array();
     require_once('invest_db.php');
@@ -50,5 +76,7 @@ function json_return($data){
         return $data=array('result' => 'no');
     }
 }
+
+
 
 ?>

@@ -56,8 +56,8 @@ section{
 .text-size-50{
     font-size: 50px;
 }
-.text-size-30{
-    font-size: 30px;
+.text-size-20{
+    font-size: 20px;
 }
 .bang{
 position: relative;
@@ -113,7 +113,7 @@ animation:animatedbang 3s ;
 }
 
 .button_login{
-    width: 95px;height: 50px;
+    width: 95px;height: 40px;
     color: white;
    font-size: 15px;
    text-align: center;
@@ -122,3 +122,4 @@ animation:animatedbang 3s ;
    background-color: #080808;
  
 }
+

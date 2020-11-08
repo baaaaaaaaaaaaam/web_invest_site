@@ -5,19 +5,13 @@ include('method.php');
 $http_method = $_SERVER["REQUEST_METHOD"];
 
 if($http_method == "GET"){
- 
     $request = $_GET['request'];
- 
-}elseif($http_method=="POST"){
+}else if($http_method=="POST"){
     $request = $_POST['request'];
 }   
 
-
-$check="retention_rate";
-
-
 //로그인 시도할 경우 id/pw검사하여 count가 1일경우 ok
-if ($request == "login") {
+if ($request === "login") {
     $id = $_GET['id'];
     $pw = $_GET['pw'];
     $count = check_login($id,$pw);
@@ -25,45 +19,76 @@ if ($request == "login") {
     if($count==1){
         $reply=json_return("ok");
         echo json_encode($reply);
-    }elseif($count!=1){
+    }else if($count!=1){
         $reply=json_return("no");
         echo json_encode($reply);
     }
     
-} elseif ($request == "check_email"){
-    echo "check_email";
-    // 아이디  ,이메일 입력받고 
-    // 1. 일치하는 아이디 있는지 검사
+}
 
-    // 2. 일치하는 아이디 있는경우 "가입된 아이디가 있습니다" 
+// 아이디중복 체크 , 같은값이 있으면 1
+if($request == 'duplicate_check_id'){
+    $id = $_GET['id'];
+    $count=duplicate_check_id($id);
+    if($count==0){
+        $reply=json_return("ok");
+        echo json_encode($reply);
+    }else if($count>0){
+        $reply=json_return("no");
+        echo json_encode($reply);
+    }
+}
 
-    // 3. 일치하는 아이디 없는 경우 이메일 중복검사
+// 회원강비
+if($request === "enroll"){
+    $id = $_GET['id'];
+    $pw = $_GET['pw'];
+    $email_address= $_GET['email_address'];
+    $return_value=enroll($id,$pw,$email_address);
 
-    // 4. 일치하는 이메일 있는경우 "가입된 이메일이 있습니다" 
+    if($return_value=="ok"){
+        $reply=json_return("ok");
+        echo json_encode($reply);
+    }else{
+        $reply=json_return("no");
+        echo json_encode($reply);
+    }
+}
 
-    // 5. 일치하는 이메일 없는 경우 "이메일로 난수 6자리 전송" 후 3분 카운팅
 
-} elseif ($reqeust=="signup") {
-    echo "signup";
-   // 아이디 , 패스워드,이메일 입력받고 
 
-   // db에 저장 
-} elseif ($request == "stock_index") {   //stock_index_field 에는 daum_kospi ,daum_kospi200,daum_kosdaq이들어가야한다
+
+// 코스피 , 코스피200, 코스닥의 지수 비교 
+ //stock_index_field 에는 daum_kospi ,daum_kospi200,daum_kosdaq이들어가야한다
+if ($request === "stock_index") {  
 
     $stock_index_field = $_GET['stock_index_field'];
     $value=get_stock_index($stock_index_field);
     echo json_encode($value);
 
-} elseif ($request == $check) { 
+}
+
+// 코스피 , 코스피200, 코스닥의 5일간 기관,개인,외국이 매입 매각 지수 비교
+if ($request === 'retention_rate') { 
     
     $retention_rate_field = $_GET['retention_rate_field'];
     $value=get_retention_rate($retention_rate_field);
     echo json_encode($value);
 
-} else{
-    // echo "else1";
 }
 
+
+
+
+// 이메일 인증을 진행하고 , 브라우저로 php에서만든 난수를 보내준다.
+if ($request === "send_mail"){
+
+    $email_address= $_GET['email_address'];
+    $_GET['address']=$email_address;
+    $check =include "send_mail.php";
+    $data=array('result' => $check);
+    echo json_encode($data);
+} 
 
 
 ?>
