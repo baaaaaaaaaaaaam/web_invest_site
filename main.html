@@ -1,0 +1,93 @@
+
+
+<!DOCTYPE HTML>
+<?php session_start(); ?>
+<html>
+    <head>
+        <title>private invest</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="./asset/css/main.css">
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    </head>
+    <body>
+   
+        <div class="full_screen">
+            <aside>
+
+            </aside>
+            <header>
+            <div class="deep-height-10p font-20 align-right">
+                    <span id="login_plain"><?php echo $_SESSION['user_id']; ?></span><span>님 어서오세요 ~</span>
+                    <button id="logout">로그아웃</button>
+                <div class="deep-height-80p font-70">
+                    <p>죽기전에 20억은 모으고 가자!!</p>
+                </div>
+                <div class="deep-height-10p">
+
+                </div>
+            </header>
+            <section>
+                <div class="container">
+                    <div class="deep-height-40p">
+                        <div class="deep-width-50p sort-left">
+                            <p>최신 뉴스 기사</p>
+                        </div>
+                        <div class="deep-width-50p sort-right">
+                            <p>최근 정보글</p>
+                        </div>
+                    </div>
+                    <div class="deep-height-30p">
+                        <div class="deep-width-33p sort-left">
+                            <div class="line_chart" id="daum_kospi_line_chart">
+
+                            </div>
+                        </div>
+                        <div class="deep-width-33p sort-left">
+                            <div class="line_chart" id="daum_kospi200_line_chart">
+
+                            </div>
+                        </div>
+                        <div class="deep-width-33p sort-left">
+                            <div class="line_chart" id="daum_kosdaq_line_chart">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deep-height-30p">
+                        <div class="deep-width-33p sort-left">
+                            <div class="line_chart" id="daum_kospi_round_chart">
+
+                            </div>
+                        </div>
+                        <div class="deep-width-33p sort-left">
+                            <div class="line_chart" id="daum_kospi200_round_chart">
+
+                            </div>
+                        </div>
+                        <div class="deep-width-33p sort-left">
+                            <div class="line_chart" id="daum_kosdaq_round_chart">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <footer>
+
+            </footer>
+        </div>
+        
+
+        
+        <!-- 구글 선형 차트 -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <!-- 차트 기능 -->
+        <script src="./asset/js/line_chart.js"></script>
+        <script src="./asset/js/negative_chart.js"></script>
+        <script src="./asset/js/main.js"></script>
+       
+    </body>
+</html>

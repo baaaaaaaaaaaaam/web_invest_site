@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>private invest</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="./asset/css/index.css">
+        <link rel="stylesheet" type="text/css" href="./asset/css/modal.css">
+   
+    </head>
+    <body>
+     
+
+        <div class="jb d bang" id="login_wrap">
+            
+            <section>
+                <div class="top-area">
+                    <h1 class="text-center text-size-50">welcome to here !!</h1>
+                </div>
+                <div class="left-area">
+                    
+                </div>
+                <div class="center-area">
+                    <div class="empty-height-10p">
+
+                    </div>
+                    <div class="id_area">
+                        <input type="text" class="input_label text-size-30" id="id"  placeholder="아이디" maxlength="12">
+                    </div>
+                    <div class="pw_area">
+                        <input type="password" class="input_label text-size-30" id="pw"  placeholder="패스워드" maxlength="12">
+                    </div>
+                    <div class="button_area">
+                        <div class="button_left">
+
+                        </div>
+                        <div class="button_center">
+                            <button class="button_login" id="login" onclick="login_click()">로그인</button>
+                            <button class="button_login" id="signup" onclick="signup_popup()">회원가입</button>
+                            
+ 
+                           
+                            
+                          
+                        </div>
+                    </div>
+
+                </div>
+                <div class="right-area">
+                    
+                </div>
+                <div class="bottom-area">
+                    <h3 class="text-center" id="caution">회원가입 후 관리자의 승인이 있어야 접속 가능합니다.</h3>
+                </div>
+            </section>
+
+        </div>
+      
+              <!-- The Modal -->
+            <div class="modal jb d bang" id="myModal">
+                <span class="close">&times;</span>             
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="m-top-area">
+                        <h1 class="m-text-center-b text-size-50">회원가입</h1>
+                    </div>                                                 
+                    <div class="m-left-area">
+                    
+                    </div>
+                    <div class="m-center-area">
+                        <div class="m-center-100">
+                            <div class="m-id_area">
+                                <input type="text" class="m-input_label text-size-20" id="m-id"  placeholder="아이디" maxlength="12">
+                            </div>
+                            <div class="m-pw_area">
+                                <input type="password" class="m-input_label text-size-20" id="m-pw"  placeholder="패스워드" maxlength="12">
+                            </div>
+                            <div class="m-pw_area">
+                                <input type="password" class="m-input_label text-size-20" id="m-check_pw"  placeholder="패스워드확인" maxlength="12">
+                            </div>
+                            <div class="m-email_area">
+                                <input type="text" class="m-input_label text-size-20" id="m-email"  placeholder="이메일주소" maxlength="30">
+                            </div>
+                            <div class="m-email_area">
+                                <input type="text" class="m-input_label text-size-20" id="m-e_mail_auth"  placeholder="이메일주소" maxlength="30">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-right-area">
+                        <div class="m-height-20">
+                            <button class="button_login" id="duplicate_check_id_btn" onclick="duplicate_check_id()">중복체크</button>
+                        </div>
+                        <div class="m-height-20">
+                           
+                        </div>
+                        <div class="m-height-20">
+                            
+                        </div>
+                        <div class="m-height-20">
+                            <button class="button_login" id="m-email_btn" onclick="check_email()">인증</button>
+                        </div>
+                        <div class="m-height-20">
+                            <button class="button_login" id="m-e_mail_auth_btn" onclick="auth_email()">인증확인</button>
+                        </div>
+                      
+                  
+                     
+                    </div>
+                   
+                    <div class="m-bottom-area">
+                        <div class="m-height-50">
+                            <p class="m-text-center-b" id="m-caution"></button>
+                        </div>
+                        <div class="m-height-50 ">
+                            <div class="m-center-100-100">
+                                <button class="button_login" id="signup" onclick="enroll()">가입하기</button>
+                            </div>
+                               
+                              
+                            
+                            
+                        </div>  
+                        
+                    </div>
+                </div>
+            </div>
+
+        <script src="asset/js/button.js"></script>
+        <!-- ajax library 추가  -->
+        <script src="asset/js/modal.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </body>
+</html>
