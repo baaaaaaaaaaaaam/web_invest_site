@@ -18,8 +18,10 @@ function login_click() {
            
             var return_value=obj.result
             if(return_value=="ok"){
-                console.log("오케오케이");
                 location.href="http://192.168.0.5/web/main.html";
+            }else if (return_value=="not permittion"){
+                alert("승인대기중 입니다");
+                
             }else{
                 document.getElementById("caution").innerText = '';
                 document.getElementById("caution").innerText = '아이디와 패스워드를 다시확인하세요';
@@ -298,4 +300,3 @@ function enroll(){
         m_caution.innerText="아이디 중복체크 해주세요 .";
     }
 }
-

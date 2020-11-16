@@ -24,6 +24,9 @@ if ($request === "login") {
         $_GET['user_id']=$id;
         include('session.php');
         
+    }else if($count==-1){
+        $reply=json_return("not permittion");
+        echo json_encode($reply);
     }else if($count!=1){
         $reply=json_return("no");
         echo json_encode($reply);
@@ -96,6 +99,67 @@ if ($request === "send_mail"){
     $check =include "send_mail.php";
     $data=array('result' => $check);
     echo json_encode($data);
+} 
+
+// 메인화면에서 최신뉴스 보여주기
+if ($request === "main_get_news"){
+
+    $value=main_get_news();
+    echo json_encode($value);
+} 
+// 한국 뉴스 보여주기
+if ($request === "korea_news"){
+    $num=$_GET['num'];
+
+    $value=korea_news($num);
+    echo json_encode($value);
+} 
+
+
+
+
+
+// 뉴스 즐겨찾기 추가/삭제
+if($request === "click_favorite"){
+    $seq=$_GET['seq_num'];
+    $id=$_GET['id'];
+    
+ 
+    $value=click_favorite($seq,$id);
+    $return_value=json_return($value);
+    echo json_encode($return_value);
+}
+
+
+// 로그인한 유저가 국내 뉴스 정보에 들어갔을때 member_news_favorite 에 조회한다.
+if($request === "news_favorite_list"){
+    $id=$_GET['id'];
+    $return_value=news_favorite_list($id);
+    echo json_encode($return_value);
+   
+}
+
+
+
+
+// 한국 뉴스 검색 결과 보여주기
+if ($request === "search_korea_news"){
+    $num=$_GET['num'];
+    $category=$_GET['category'];
+    $content=$_GET['content'];
+    $value=search_korea_news($num,$category,$content);
+    echo json_encode($value);
+} 
+
+
+// 주식정보기록 입력 
+if ($request === "insert_stock_info"){
+    $content=$_GET['content'];
+    $importance=$_GET['importance'];
+    $id=$_GET['id'];
+    $value=insert_stock_info($id,$content,$importance);
+    $return_value=json_return($value);
+    echo json_encode($return_value);
 } 
 
 

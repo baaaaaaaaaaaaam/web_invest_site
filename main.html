@@ -6,6 +6,7 @@
     <head>
         <title>private invest</title>
         <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="./asset/css/index.css">
         <link rel="stylesheet" type="text/css" href="./asset/css/main.css">
         <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
@@ -15,14 +16,42 @@
    
         <div class="full_screen">
             <aside>
-
+                <div class="jb fixed">
+                    <div class="menu_area">
+                       <div class="font-70 sdms-font">
+                        <span id="main">메인</span>
+                       </div>
+                       <div class="font-30 binggrae-font">
+                        <span id="info_news_korea">국내 뉴스 정보</span>
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            <span id="info_news_foreigner">해외 뉴스 정보</span>
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            <span id="info_invest_stock">주식 정보 기록</span>
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            코스피
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            코스닥
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            코스피200
+                        </div>
+                    </div>
+                </div>
             </aside>
             <header>
             <div class="deep-height-10p font-20 align-right">
-                    <span id="login_plain"><?php echo $_SESSION['user_id']; ?></span><span>님 어서오세요 ~</span>
-                    <button id="logout">로그아웃</button>
+              
+                
+               
+                    <span id="login_plain"><?php echo $_SESSION['user_id']; ?></span><span> 로 로그인 하였습니다.</span>
+                    <button class="jb button_login" id="logout">로그아웃</button>
+                   
                 <div class="deep-height-80p font-70">
-                    <p>죽기전에 20억은 모으고 가자!!</p>
+                    <p class="binggrae-font">죽기전에 20억은 모으고 가자!!</p>
                 </div>
                 <div class="deep-height-10p">
 
@@ -32,7 +61,27 @@
                 <div class="container">
                     <div class="deep-height-40p">
                         <div class="deep-width-50p sort-left">
-                            <p>최신 뉴스 기사</p>
+                            <div class="font-20">
+                                최신 뉴스 기사
+                            </div>
+                            <div>
+                                <div class="get_news">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="table_newspaper">신문사</th>
+                                                <th class="table_title">제목</th>
+                                                <th class="table_time">작성시간</th>
+                                         
+                                            </tr>
+                                        </thead>
+                                
+                                        <tbody id="dynamicTbody">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div class="deep-width-50p sort-right">
                             <p>최근 정보글</p>
@@ -88,6 +137,7 @@
         <script src="./asset/js/line_chart.js"></script>
         <script src="./asset/js/negative_chart.js"></script>
         <script src="./asset/js/main.js"></script>
+        <script src="./asset/js/info_board.js"></script>
        
     </body>
 </html>

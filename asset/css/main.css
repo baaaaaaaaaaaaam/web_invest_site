@@ -81,8 +81,17 @@ footer{
     text-align: center;
     font-size: 70px;
     user-select: none;
-    /* color: white; */
+    color: white;
 }
+
+.font-30{
+    
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    
+}
+
 .font-20{
     text-align: center;
     font-size: 20px;
@@ -97,3 +106,221 @@ footer{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+
+.fixed {
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    position:fixed; 
+    width:18%; 
+    height: 500px;
+    display:inline-block; 
+    top:250px; /* 창에서 위에서 부터의 높이 */ 
+    left: 25px;
+}
+.menu_area{
+    margin: 30px auto;
+    width: 80%;
+    height: 90%;
+}
+
+.menu_area :hover{
+    color: tomato;
+    font-size: 35px;
+    
+}
+
+.deep-width-10p{
+    width: 10%; height: 100%;
+    float: left;
+}
+.deep-width-80p{
+    width: 80%; height: 100%;
+    float: left;
+    
+    
+}
+.deep-height-15p{
+    margin: 0 auto;
+    width: 95%; height: 15%;
+    
+}
+.deep-height-70p{
+    margin: 0 auto;
+    width: 95%; height: 70%;
+}
+.empty_searching_area{
+    width: 100%;height: 30%;
+    
+}
+.searching_area{
+    margin: 0 auto;
+    width: 80%; height: 40%;
+    
+}
+.get_news{
+    font-size: 15px;
+    color: white;
+}
+table tbody td {
+    color: white;
+}
+	/*다운로드한 미생체 폰트 적용*/
+	@font-face{
+		font-family:'SDMiSaeng'; /*글꼴*/
+		src: local('SDMiSaeng'),
+			url('SDMiSaeng.eot'),
+			url('SDMiSaeng.woff') format('woff'),
+			url('SDMiSaeng.ttf') format('truetype');
+	}
+
+	.sdms-font{
+		font-family: 'SDMiSaeng', sans-serif;/*웹 폰트 지정*/
+        color: white;
+    }
+  
+    	/*다운로드한 빙그래 폰트 적용*/
+	@font-face{
+		font-family:'BinggraeTaom'; /*글꼴*/
+		src: local('BinggraeTaom'),
+			url('BinggraeTaom.eot'),
+			url('BinggraeTaom.woff') format('woff'),
+			url('BinggraeTaom.ttf') format('truetype');
+	}
+
+	.binggrae-font{
+		font-family: 'BinggraeTaom', sans-serif;/*웹 폰트 지정*/
+        color: white;
+    }
+
+
+    .href_link {
+        color:white;
+    }
+    
+
+    /* drop 버튼 css */
+    .dropbtn {
+        width: 100%;height: 100%;
+        background-color: #4CAF50;
+        color: white;
+        border-radius:10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #3e8e41;
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width:100px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    
+    .dropdown-content p {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown p:hover {background-color: #ca6969}
+    
+    .show {display:block;}
+
+.input_label{
+    margin: 0 auto;
+    width: 95%;height: 95%;
+    background-color: white;
+}
+.input_text {
+    width: 100%;height: 95%;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+
+
+.searching_btn{
+    width: 100%;height: 100%;
+    color: white;
+   font-size: 15px;
+   text-align: center;
+   border-radius:10px;
+   border: none;
+   background-color: #4CAF50;
+   cursor: pointer;
+}
+.searching_btn:hover, .searching_btn:focus {
+    background-color: #3e8e41;
+}
+
+/* .korea_news_table{
+    width: 100%; height: 50px; 
+   
+} */
+table {
+    width: 95%;
+    border: 1px solid #696666;
+    text-align: center;
+}
+.korea_news_board thead{
+    background-color: white;
+}
+.korea_news_board tr {
+    border-bottom: 1px solid #444444;
+    padding: 5px;
+
+  }
+
+
+tr .favorit{
+    width: 5%; height: 100%;
+   
+}
+tr .title{
+    width:60%; height: 100%;
+    
+}
+tr .issue{
+    width: 20%; height: 100%;
+}
+tr .newspaper{
+    width: 15%; height: 100%;
+  
+}
+
+.paging_area{
+    margin: 0 auto;
+    width: 60%; height: 100%;
+}
+
+
+ul li{
+    list-style-type: none;
+    float: left;
+    outline: 2px white;
+    margin-right: 10px;
+}
+
+.pagination{
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.active{
+    font-size: 25px;
+    color: red;
+}
