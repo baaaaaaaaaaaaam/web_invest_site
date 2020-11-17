@@ -131,7 +131,7 @@ function init_paging(start_num){
 
 
     // 유저의favorite list와 불러온 news_crawling seq를 비교하여 같은값일 경우 tmp_check_bool=true , 다른값일경우 tmp_check_bool=false처리한다.  
-    $("#dynamicTbody").empty();
+        $("#dynamicTbody").empty();
     var html="";
     
     for(var i=0;i<obj.length;i++){
@@ -300,11 +300,5 @@ function make_paging(count,start_num){
         });
         
 }
-
-
-
-// 검색 기능
-
-
 
 

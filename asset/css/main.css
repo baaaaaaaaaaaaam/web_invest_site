@@ -239,6 +239,9 @@ table tbody td {
     
     .show {display:block;}
 
+    .z-index-2{
+        z-index: 2
+    }
 .input_label{
     margin: 0 auto;
     width: 95%;height: 95%;

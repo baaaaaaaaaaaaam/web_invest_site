@@ -234,16 +234,59 @@ function news_favorite_list($id){
     return  $content_array;
 }
 
+
+// 주식정보 입력시 새로운정보를 저장하고 , 입력한정보를보여주기위해 첫페이지의 내용들을 불러온다.
 function insert_stock_info($id,$content,$importance){
-    echo $id,$content,$importance;
-    require_once('invest_db.php');
+    require('invest_db.php');
     $sql = "insert into stock_info(id,content,importance,date_time) value ('$id','$content','$importance',now())";
     $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
     if($result === false){
-        return "add_insert_stock_info_error";
+        return "stock_info_insert_error";
     }else{
-        return "add";
+        $value=stock_info_list(0);
+        return $value;
     }
+}
+
+// 주식정보 입력시 새로운정보를 저장하고 , 입력한정보를보여주기위해 첫페이지의 내용들을 불러온다.
+function delete_stock_info($id,$key){
+    require('invest_db.php');
+    
+    $sql = "delete from stock_info where id='$id' AND date_time='$key'";
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    if($result === false){
+        return "stock_info_delete_error";
+    }else{
+        $value=stock_info_list(0);
+        return $value;
+    }
+}
+
+
+function stock_info_list($start_num) {
+    $total_array=array();
+    
+    require('invest_db.php');
+    $sql = "select * from stock_info";
+    $result=mysqli_query($conn,$sql);
+    $count=mysqli_num_rows($result);
+
+    $content_array=array();
+    $sql = "select * from stock_info order by seq desc limit $start_num,9";
+    $result = mysqli_query($conn, $sql);
+
+    mysqli_close($conn);
+
+    while($row = mysqli_fetch_array($result)){
+        $tmp_array=array('seq'=>$row['seq'],'id'=>$row['id'],'content'=>$row['content'],
+        'importance'=>$row['importance'],'date_time'=>$row['date_time']);    
+        array_push($content_array,$tmp_array);
+    }
+    $total_array=array('count' => $count,'stock_info'=>$content_array);
+    return $total_array;
 }
 
 ?>

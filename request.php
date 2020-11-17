@@ -110,7 +110,6 @@ if ($request === "main_get_news"){
 // 한국 뉴스 보여주기
 if ($request === "korea_news"){
     $num=$_GET['num'];
-
     $value=korea_news($num);
     echo json_encode($value);
 } 
@@ -152,15 +151,42 @@ if ($request === "search_korea_news"){
 } 
 
 
+// 로그인한 유저가 국내 뉴스 정보에 들어갔을때 member_news_favorite 에 조회한다.
+if($request === "stock_info_list"){
+    $num=$_GET['num'];
+    $value=stock_info_list($num);
+    echo json_encode($value);
+}
+
+
 // 주식정보기록 입력 
 if ($request === "insert_stock_info"){
     $content=$_GET['content'];
     $importance=$_GET['importance'];
     $id=$_GET['id'];
-    $value=insert_stock_info($id,$content,$importance);
-    $return_value=json_return($value);
-    echo json_encode($return_value);
-} 
 
+    if($id==null){
+
+    }else{
+        $value=insert_stock_info($id,$content,$importance);
+        $return_value=json_return($value);
+        echo json_encode($return_value);
+    }
+    
+} 
+// 주식정보기록 입력 
+if ($request === "delete_stock_info"){
+    $key=$_GET['key'];
+    $id=$_GET['id'];
+
+    if($id==null){
+        
+    }else{
+        $value=delete_stock_info($id,$key);
+        $return_value=json_return($value);
+        echo json_encode($return_value);
+    }
+    
+} 
 
 ?>

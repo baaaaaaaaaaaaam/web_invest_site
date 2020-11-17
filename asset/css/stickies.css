@@ -5,13 +5,13 @@ ul#stickies li {
     list-style: none;
     z-index: 1;
     float: left;
-    margin: 30px;
-    padding: 15px 15px 50px 15px;
-    width: 200px;
-    height: 200px;
+    margin: 20px;
+    padding: 10px 10px 20px 10px;
+    width: 280px;
+    height: 160px;
     border: 1px solid #bfbfbf;
     background-color:  LightGoldenRodYellow; /* 색상명 값이 맞지 않을 땐 #fafad2 */
-    color: black;
+    color: white;
     text-decoration: none;
     -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -27,7 +27,7 @@ ul#stickies li {
    
    ul#stickies li span.sticky {
     font-family: Verdana, Helvetica, sans-serif;
-    font-size: 200%;
+    font-size: 120%;
    }
    
    /* 회전 */
@@ -68,3 +68,22 @@ ul#stickies li {
     transform: rotate(0deg) scale(1.25);
     z-index: 10;
    }
+
+div.top{
+    width: 100%;height: 20%;
+}
+div.top .close{
+    float: right;
+}
+
+div.top .close:hover,div.top .close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+div.center{
+    width: 100%;height: 70%;
+}
+div.bottom{
+    width: 100%;height: 10%;
+}
