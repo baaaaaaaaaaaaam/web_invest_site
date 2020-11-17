@@ -142,3 +142,30 @@ def finance_poitnt_insert_db(items,table_name):
     finally:
         db.close()
         print("종료")
+
+def kiwoom_daily_report(title):
+    db=dbconn()
+    try:
+        with db.cursor() as curs:
+            sql="select title from kiwoom_daily_report where title='"+title+"'"
+            curs.execute(sql)
+            rs = curs.fetchall()
+            value=len(rs)
+            print(value)
+    finally:
+        db.close()
+        print("종료")
+    return value
+
+def insert_kiwoom_daily_report(title):
+    db=dbconn()
+    try:
+        with db.cursor() as curs:
+            sql='insert into kiwoom_daily_report (title) values (%s)'
+            curs.execute(sql,title)
+            db.commit()
+            print("저장")
+    finally:
+        db.close()
+        print("종료")
+    

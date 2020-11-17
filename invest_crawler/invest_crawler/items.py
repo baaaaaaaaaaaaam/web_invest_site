@@ -31,3 +31,7 @@ class Finance_point(scrapy.Item):
     foreigner=scrapy.Field()
     organ=scrapy.Field()
     
+
+class kiwoom_daily_report(scrapy.Item):
+    file_urls = scrapy.Field()
+    files = scrapy.Field()

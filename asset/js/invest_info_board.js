@@ -5,9 +5,9 @@ $(document).ready(function() {
  });
 
 //  유저아이디
- var _user_name = document.getElementById('login_plain').innerText;
+var _user_name = document.getElementById('login_plain').innerText;
 // 중요도
- var importance_array=["최상","상","중","하","최하"]
+var importance_array=["최상","상","중","하","최하"]
 function init_paging(start_num){
     //  db에 저장
     $.ajax({
