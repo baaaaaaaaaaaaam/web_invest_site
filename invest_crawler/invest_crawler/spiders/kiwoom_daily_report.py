@@ -36,23 +36,25 @@ class investSpider(scrapy.Spider):
         # 파일명 ( 디비에 저장하고 검사 후 중복이면 다운로드안함, 중복아니면 다운로드 )
         
         text = self.browser.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[1]/td[2]/a').text
-        print("dbcheck")
+        print("db에 중복된 title 체크 시작")
       
         return_valut=kiwoom_daily_report(text)
-        print("dbcheck-end")
-        print(return_valut)
-        print("파일다운로드")
+        print("db에 중복된 title 체크 종료")
+        print("결과 :"+str(return_valut))
+        print("파일다운로드 준비중")
         
         if return_valut==1:
-            print("동작안함")
+            print("이미 다운로드한 파일있음")
         else:
-            print("다운로드진행")
+            print("다운로드 시작")
             check = self.browser.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[1]/td[4]/a').click()
+            print("db에 다운로드한 파일 title 저장")
             insert_kiwoom_daily_report(text)
+            print("db에 다운로드한 파일 title 종료")
             # 디비에 저장
         time.sleep(5)
-
-        result=os.popen('php /var/www/html/web/kiwoom_send_mail.php').read().strip()
-
-        print("전체 진행과정 :"+result)
+        print("이메일 전송 요청")
+        result=os.popen('auth=ansgyqja php /var/www/html/web/kiwoom_send_mail.php').read().strip()
+        
+        print("이메일 전송 결과 :"+result)
   
