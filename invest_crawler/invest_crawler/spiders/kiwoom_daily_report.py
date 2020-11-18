@@ -6,6 +6,9 @@ import time
 from method import kiwoom_daily_report, insert_kiwoom_daily_report
 from selenium.webdriver.common.keys import Keys
 
+# php 파일 실행시키는용도 
+import os
+
 class investSpider(scrapy.Spider):
     # scrapy crawl invest -o test.csv  로 실행함
     name="kiwoom_daily_report"
@@ -16,10 +19,10 @@ class investSpider(scrapy.Spider):
         scrapy.Spider.__init__(self)
         # chrome드라이버 절대경로
         options = webdriver.ChromeOptions()
-        # options.add_argument('headless')
-        # options.add_argument('window-size=1920x1080')
-        # options.add_argument("disable-gpu")
-        # options.add_argument("--disable-gpu")
+        options.add_argument('headless')
+        options.add_argument('window-size=1920x1080')
+        options.add_argument("disable-gpu")
+        options.add_argument("--disable-gpu")
         self.browser= webdriver.Chrome('/home/test/Downloads/chromedriver',chrome_options=options)
 
     def parse(self,response):
@@ -47,8 +50,9 @@ class investSpider(scrapy.Spider):
             check = self.browser.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[1]/td[4]/a').click()
             insert_kiwoom_daily_report(text)
             # 디비에 저장
-        time.sleep(3)
-        print("종료")
-        
+        time.sleep(5)
 
-       
+        result=os.popen('php /var/www/html/web/kiwoom_send_mail.php').read().strip()
+
+        print("전체 진행과정 :"+result)
+  

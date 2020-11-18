@@ -159,13 +159,18 @@ def kiwoom_daily_report(title):
 
 def insert_kiwoom_daily_report(title):
     db=dbconn()
+    now = datetime.now()
+    year = now.strftime('%y')
+    _date = title[0:5]
+    _date=_date.split('/')
+    file_name='Morning Letter_'+year+_date[0]+_date[1]+'.pdf'
     try:
         with db.cursor() as curs:
-            sql='insert into kiwoom_daily_report (title) values (%s)'
-            curs.execute(sql,title)
+            sql='insert into kiwoom_daily_report (title,file_name,created) values (%s,%s,now())'
+            curs.execute(sql,(title,file_name))
             db.commit()
             print("저장")
     finally:
         db.close()
         print("종료")
-    
+        
