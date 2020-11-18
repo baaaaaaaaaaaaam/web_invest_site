@@ -23,5 +23,4 @@
 ![image](https://user-images.githubusercontent.com/57000871/99529256-d6eaec80-29e2-11eb-95bd-843d8f6819a7.png)
 
 
-# html , css ,javascript 공부를 위한 프로젝트
 
