@@ -303,6 +303,18 @@ tr .newspaper{
     width: 15%; height: 100%;
   
 }
+/* finance_analysis_table */
+tr .f-title{
+    width:30%; height: 100%;
+    
+}
+tr .f-content{
+    width: 45%; height: 100%;
+  
+}
+tr .f-issue{
+    width: 20%; height: 100%;
+}
 
 .paging_area{
     margin: 0 auto;

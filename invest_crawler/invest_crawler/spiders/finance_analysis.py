@@ -13,7 +13,7 @@ class investSpider(scrapy.Spider):
     # scrapy crawl invest -o test.csv  로 실행함
     name="finance_analysis"
     allowed_domains=["https://www.onestopsamsungpop.co.kr/"]
-    start_urls=["https://newpoptv.samsungpop.com/html/board/ContentListPage.jsp?contentCd=&currPage=91&boardType=IN_INVEST_INFO&schCateCd=1607011641125593H6N6&schTab=1607011641125593H6N6"]
+    start_urls=["https://newpoptv.samsungpop.com/html/board/ContentListPage.jsp?contentCd=&currPage=31&boardType=IN_INVEST_INFO&schCateCd=1607011641125593H6N6&schTab=1607011641125593H6N6"]
 
 
     def __init__(self):
@@ -40,7 +40,7 @@ class investSpider(scrapy.Spider):
         print(recently_date)
         # 파일명 ( 디비에 저장하고 검사 후 중복이면 다운로드안함, 중복아니면 다운로드 )
         try:
-            for i in range(1,31,):
+            for i in range(1,7):
                 self.browser.find_element_by_xpath('//*[@id="contents"]/div[2]/div/div[3]/div/a[2]').click()
                 time.sleep(2)
                 for i in range(7,2,-1):
@@ -49,7 +49,8 @@ class investSpider(scrapy.Spider):
                     time.sleep(2)
                     for i in range(9, 0 , -1): 
                         
-                        issue = self.browser.find_element_by_xpath('//*[@id="contents"]/div[2]/div/div[2]/div[9]/div[2]/span').text
+                        time_tmp='//*[@id="contents"]/div[2]/div/div[2]/div['+str(i)+']/div[2]/span'
+                        issue = self.browser.find_element_by_xpath(time_tmp).text
                         
                         # 시간 정형화
                         _issue=issue.split('/')
@@ -93,7 +94,3 @@ class investSpider(scrapy.Spider):
 
         finally:
             self.browser.quit()
-        
-
-        
-  

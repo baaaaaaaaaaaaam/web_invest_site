@@ -88,9 +88,6 @@ if ($request === 'retention_rate') {
 
 }
 
-
-
-
 // 이메일 인증을 진행하고 , 브라우저로 php에서만든 난수를 보내준다.
 if ($request === "send_mail"){
 
@@ -100,6 +97,11 @@ if ($request === "send_mail"){
     $data=array('result' => $check);
     echo json_encode($data);
 } 
+
+
+
+
+////////////////////////////////////////////////////국내 뉴스 //////////////////////////////////////////////////////////////
 
 // 메인화면에서 최신뉴스 보여주기
 if ($request === "main_get_news"){
@@ -113,10 +115,6 @@ if ($request === "korea_news"){
     $value=korea_news($num);
     echo json_encode($value);
 } 
-
-
-
-
 
 // 뉴스 즐겨찾기 추가/삭제
 if($request === "click_favorite"){
@@ -151,15 +149,22 @@ if ($request === "search_korea_news"){
 } 
 
 
-// 로그인한 유저가 국내 뉴스 정보에 들어갔을때 member_news_favorite 에 조회한다.
+
+////////////////////////////////////////////////////국내 뉴스 //////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////주식 정보 //////////////////////////////////////////////////////////////
+
+
+// 주식 정보 전체 리스트 요청
 if($request === "stock_info_list"){
     $num=$_GET['num'];
     $value=stock_info_list($num);
     echo json_encode($value);
 }
-
-
 // 주식정보기록 입력 
+
+
 if ($request === "insert_stock_info"){
     $content=$_GET['content'];
     $importance=$_GET['importance'];
@@ -174,7 +179,7 @@ if ($request === "insert_stock_info"){
     }
     
 } 
-// 주식정보기록 입력 
+// 주식정보기록 삭제 
 if ($request === "delete_stock_info"){
     $key=$_GET['key'];
     $id=$_GET['id'];
@@ -188,5 +193,61 @@ if ($request === "delete_stock_info"){
     }
     
 } 
+/////////////////////////////////////////////////////주식 정보 //////////////////////////////////////////////////////////////
 
+
+//////////////////////////////////////////////// 증권사 기업 분석 ////////////////////////////////////////////////////////////
+
+// 메인화면에서 최신 finance_analysis 보여주기
+if ($request === "main_get_finance_analysis"){
+
+    $value=main_get_finance_analysis();
+    echo json_encode($value);
+} 
+
+
+// finance_analysis 보여주기
+if ($request === "finance_analysis"){
+    $num=$_GET['num'];
+    $value=finance_analysis($num);
+    echo json_encode($value);
+} 
+
+// finance_analysis 즐겨찾기 추가/삭제
+if($request === "click_favorite_finance_analysis"){
+    $seq=$_GET['seq_num'];
+    $id=$_GET['id'];
+    
+ 
+    $value=click_favorite_finance_analysis($seq,$id);
+    $return_value=json_return($value);
+    echo json_encode($return_value);
+}
+
+
+// 로그인한 유저가 증권사 기업분석 들어갔을때 member_news_favorite 에 조회한다.
+if($request === "finance_analysis_favorite_list"){
+    $id=$_GET['id'];
+    $return_value=finance_analysis_favorite_list($id);
+    echo json_encode($return_value);
+   
+}
+
+
+
+
+// finance_analysis 검색 결과 보여주기
+if ($request === "search_finance_analysis"){
+    $num=$_GET['num'];
+    $category=$_GET['category'];
+    $content=$_GET['content'];
+    $value=search_finance_analysis($num,$category,$content);
+    echo json_encode($value);
+} 
+
+
+
+
+
+//////////////////////////////////////////////// 증권사 기업 분석 ////////////////////////////////////////////////////////////
 ?>

@@ -2,21 +2,20 @@ $(document).ready(function() {
     init_paging(0)
  });
 
-
 //  검색에 사용되는 변수
-var category=document.getElementById('dropbtn').innerText
-var content=document.getElementsByClassName('input_text')[0];
-var boolean_search;
+ var category=document.getElementById('dropbtn').innerText
+ var content=document.getElementsByClassName('input_text')[0];
+ var boolean_search;
 // 검색기능
 document.getElementById('searching-btn').onclick=function(){
 
-   if(content.value!=""){
-       boolean_search=true;
-   }else{
-       boolean_search=false;
-   }
-   searching(0,category,content.value);
-   // content.value="";
+    if(content.value!=""){
+        boolean_search=true;
+    }else{
+        boolean_search=false;
+    }
+    searching(0,category,content.value);
+    // content.value="";
 }
 
 
@@ -26,20 +25,20 @@ function searching(num,category,content){
         _category="issue"
     }else if(category=="제목"){
         _category="title"
-    }else if(category=="신문사"){
-        _category="newspaper"
+    }else if(category=="내용"){
+        _category="content"
     }
     $.ajax({
         type:"GET",
         url:"http://192.168.0.5/web/request.php",
-        data : {request:'search_korea_news',num:num,category:_category,content:content},
+        data : {request:'search_finance_analysis',num:num,category:_category,content:content},
         
         // dataType : "text/plain",
         success: function(result){
         //  console.log(result);
             const obj = JSON.parse(result);
-           
-          
+            
+            
             if(obj.count==0){
                 $("#dynamicTbody").empty();
             }else{
@@ -84,17 +83,17 @@ $('#drop_content3').click(function(){
 
 
 function init_paging(start_num){
-// main 페이지에서 뉴스 크롤링
+
     $.ajax({
         type:"GET",
         url:"http://192.168.0.5/web/request.php",
-        data : {request:'korea_news',num:start_num},
+        data : {request:'finance_analysis',num:start_num},
         
         // dataType : "text/plain",
         success: function(result){
         //  console.log(result);
             const obj = JSON.parse(result);
-            make_list(obj.news_content);
+            make_list(obj.finance_analysis);
             make_paging(obj.count,start_num);
         },
         error: function(xhr, status, error) {
@@ -118,7 +117,7 @@ function init_paging(start_num){
     await $.ajax({
         type:"GET",
         url:"http://192.168.0.5/web/request.php",
-        data : {request:'news_favorite_list',id:user_name},
+        data : {request:'finance_analysis_favorite_list',id:user_name},
         
         // dataType : "text/plain",
         success: function(result){
@@ -151,9 +150,9 @@ function init_paging(start_num){
         html += '<td><button id="seq_'+obj[i].seq+'" onClick="click_favorite(this.id)" style="border:none"><img src="./asset/image/un_favorite.png" height="30" width="30"></button></td>';
       }
       
-      html += '<td><a class="href_link" href="'+obj[i].urlPath+'" target="_black">'+obj[i].title+'</a>'+'</td>';
-      html += '<td >'+obj[i].issue+'</td>';
-      html += '<td>'+obj[i].newspaper+'</td>';
+      html += '<td><a class="href_link" href="'+obj[i].url+'" target="_black">'+obj[i].title+'</a>'+'</td>';
+      html +=  '<td><a class="href_link" href="'+obj[i].url+'" target="_black">'+obj[i].content+'</a>'+'</td>';
+      html += '<td>'+obj[i].issue+'</td>';
       html += '</tr>';	    
     }
     $("#dynamicTbody").append(html);
@@ -177,7 +176,7 @@ function init_paging(start_num){
         $.ajax({
             type:"GET",
             url:"http://192.168.0.5/web/request.php",
-            data : {request:'click_favorite',seq_num:seq,id:name},
+            data : {request:'click_favorite_finance_analysis',seq_num:seq,id:name},
             
             // dataType : "text/plain",
             success: function(result){
@@ -286,6 +285,7 @@ function make_paging(count,start_num){
             start_page*=15;
             $('.pagination').empty()
             init_paging(start_page)
+            
         }
     });
 
