@@ -12,7 +12,7 @@
 * 뉴스기사 크롤링 (scrapy , selenium )
 *  코스피,코스닥,코스피200 크롤링 하여 지수,외국인,개인,기관 매입/매수 지표등을 확인 ( google-chart , highchart )
 * 증권사 일일 리포트 파일(pdf)를 크롤링 하여 매일 아침 자신의 이메일로 보내준다
-* 증권사 기업분석 리포트 (진행중) 
+* 증권사 기업분석 리포트 
 * 간략하게 자신이기록하고 싶은 것을 포스트잇으로 저장
 
 ![image](https://user-images.githubusercontent.com/57000871/99528958-6217b280-29e2-11eb-8f43-682861391c43.png)
@@ -21,6 +21,6 @@
 ![image](https://user-images.githubusercontent.com/57000871/99528998-752a8280-29e2-11eb-9075-9a1b62c2d128.png)
 ![image](https://user-images.githubusercontent.com/57000871/99529050-8c697000-29e2-11eb-8498-bd5bf5316e78.png)
 ![image](https://user-images.githubusercontent.com/57000871/99529256-d6eaec80-29e2-11eb-95bd-843d8f6819a7.png)
-
+![image](https://user-images.githubusercontent.com/57000871/99783894-61a42680-2b5e-11eb-857c-a5f5a93507be.png)
 
 
