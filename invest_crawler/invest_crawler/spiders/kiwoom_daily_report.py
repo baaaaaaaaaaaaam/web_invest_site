@@ -46,6 +46,9 @@ class investSpider(scrapy.Spider):
         if return_valut==1:
             print("이미 다운로드한 파일있음")
         else:
+            print("기존 pdf 파일 삭제")
+            os.popen('rm -rf /home/test/git/web_invest_site/invest_crawler/*.pdf').read().strip()
+            print("기존 pdf 파일 완료")
             print("다운로드 시작")
             check = self.browser.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[1]/td[4]/a').click()
             print("db에 다운로드한 파일 title 저장")
