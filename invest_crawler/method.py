@@ -5,6 +5,10 @@ import pymysql
 # 년 월 일 시 분 비교 
 # time1 :디비에 저장된 가장 최신 게시물의 게시 시간
 # time2 : 크로링한 게시물의 게시 시간
+
+
+
+# 2020.11.12 11:00:00와 2020.11.13 09:00:00형태 비교
 def time_compare(t1,t2):
 
     # value 는 연산을 통해 얻은 숫자이다
@@ -38,6 +42,8 @@ def calculate_date(year,month,day):
     return value
 
 
+
+# 2020.11.12 와 2020.11.13 형태 비교 
 def check_date(saved_date,crawl_date):
     _saved_date=saved_date.split(".")
     saved=calculate_date(_saved_date[0],_saved_date[1],_saved_date[2])
@@ -48,6 +54,18 @@ def check_date(saved_date,crawl_date):
     else:
         return False
 
+# 2020-11-12 와 2020-11-13 형태 비교 
+def check_date1(saved_date,crawl_date):
+    _saved_date=saved_date.split("-")
+    saved=calculate_date(_saved_date[0],_saved_date[1],_saved_date[2])
+    _crawl_date=crawl_date.split("-")
+    crawl=calculate_date(_crawl_date[0],_crawl_date[1],_crawl_date[2])
+    if saved < crawl:
+        print(True)
+        return True
+    else:
+        print(False)
+        return False
     
     
 
@@ -174,3 +192,30 @@ def insert_kiwoom_daily_report(title):
         db.close()
         print("종료")
         
+def finance_analysis():
+    db=dbconn()
+    try:
+        with db.cursor() as curs:
+            sql="select issue from finance_analysis order by issue desc limit 1"
+            curs.execute(sql)
+            rs = curs.fetchall()
+            return rs
+            
+    finally:
+        db.close()
+        print("finance_analysis 종료")
+
+def insert_finance_analysis(title,content,issue,url):
+    db=dbconn()
+    print(title+ " 저장 시작 ")
+    try:
+        with db.cursor() as curs:
+            sql='insert into finance_analysis (title,content,issue,url) values (%s,%s,%s,%s)'
+            curs.execute(sql,(title,content,issue,url))
+            db.commit()
+            
+    finally:
+        db.close()
+        print(title+ " 저장 종료 ")
+    
+check_date1("2020-11-18","2020-11-13")

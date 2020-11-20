@@ -45,16 +45,18 @@ class investSpider(scrapy.Spider):
         
         if return_valut==1:
             print("이미 다운로드한 파일있음")
+            print("이메일 전송 안함")
         else:
             print("다운로드 시작")
             check = self.browser.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[1]/td[4]/a').click()
             print("db에 다운로드한 파일 title 저장")
+            time.sleep(5)
             insert_kiwoom_daily_report(text)
             print("db에 다운로드한 파일 title 종료")
+            print("이메일 전송 요청")
+            result=os.popen('auth=ansgyqja php /var/www/html/web/kiwoom_send_mail.php').read().strip()
+            print("이메일 전송 결과 :"+result)
             # 디비에 저장
-        time.sleep(5)
-        print("이메일 전송 요청")
-        result=os.popen('auth=ansgyqja php /var/www/html/web/kiwoom_send_mail.php').read().strip()
         
-        print("이메일 전송 결과 :"+result)
+        
   

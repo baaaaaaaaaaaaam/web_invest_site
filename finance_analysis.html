@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<?php session_start(); ?>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>private invest</title>
+    <link rel="stylesheet" type="text/css" href="./asset/css/index.css">
+    <link rel="stylesheet" type="text/css" href="./asset/css/main.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="full_screen">
+        <aside>
+            <div class="jb fixed">
+                <div class="menu_area">
+                   <div class="font-70 sdms-font">
+                    <span id="main">메인</span>
+                   </div>
+                   <div class="font-30 binggrae-font">
+                        <span id="info_news_korea">국내 뉴스 정보</span>
+                    </div>
+                    <div class="font-30 binggrae-font">
+                        <span id="info_invest_stock">주식 정보 기록</span>
+                    </div>
+                    <div class="font-30 binggrae-font">
+                        <span id="finance_analysis">증권사 기업 분석</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </aside>
+        <header>
+            <div class="deep-height-10p font-20 align-right">
+              
+                
+               
+                <span id="login_plain"><?php echo $_SESSION['user_id']; ?></span><span> 로 로그인 하였습니다.</span>
+                <button class="jb button_login" id="logout">로그아웃</button>
+               
+            <div class="deep-height-80p font-70">
+                <p class="binggrae-font">죽기전에 20억은 모으고 가자!!</p>
+            </div>
+            <div class="deep-height-10p">
+
+            </div>
+        </header>
+        <section>
+
+        </section>
+        <footer>
+
+        </footer>
+    </div>
+
+    <script src="./asset/js/info_board.js"></script>
+</body>
+</html>
