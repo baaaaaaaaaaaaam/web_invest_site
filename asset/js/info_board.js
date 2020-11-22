@@ -27,3 +27,6 @@ $("#info_news_korea").click(function(){
     location.href="http://192.168.0.5/web/korea_news_board.html";
   })
 
+document.getElementById('finance_analysis').onclick = function(){
+  location.href="http://192.168.0.5/web/finance_analysis.html";
+}

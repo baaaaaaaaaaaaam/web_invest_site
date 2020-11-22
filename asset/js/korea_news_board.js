@@ -3,18 +3,20 @@ $(document).ready(function() {
  });
 
 
+//  검색에 사용되는 변수
+var category=document.getElementById('dropbtn').innerText
+var content=document.getElementsByClassName('input_text')[0];
+var boolean_search;
 // 검색기능
 document.getElementById('searching-btn').onclick=function(){
-   var category=document.getElementById('dropbtn').innerText
-   var content=document.getElementsByClassName('input_text')[0];
 
-//   드랍버튼 활성상태에서 검색 할경우 드랍 버튼 지움
-//   document.getElementById('droplist').style.display='none';
-   
- 
-
-    searching(0,category,content.value);
-    content.value="";
+   if(content.value!=""){
+       boolean_search=true;
+   }else{
+       boolean_search=false;
+   }
+   searching(0,category,content.value);
+   // content.value="";
 }
 
 
@@ -36,10 +38,10 @@ function searching(num,category,content){
         success: function(result){
         //  console.log(result);
             const obj = JSON.parse(result);
-            console.log(obj)
+           
           
             if(obj.count==0){
-
+                $("#dynamicTbody").empty();
             }else{
                 make_list(obj.news_content);
                  make_paging(obj.count,num);
@@ -182,7 +184,6 @@ function init_paging(start_num){
             //  console.log(result);
                 const obj = JSON.parse(result);
                 // db전달 성공시 이미지 변경하기
-                console.log(obj)
                 if(obj.result=="add"){
                     var a=document.getElementById(clicked_id).childNodes[0]
                     a.src="./asset/image/favorite.png";
@@ -267,7 +268,11 @@ function make_paging(count,start_num){
         var num=jQuery(this).text();
         $('.pagination').empty()
         num = num*15-15
-        init_paging(num)
+        if(boolean_search){
+            searching(num,category,content.value);
+        }else{
+            init_paging(num)
+        }
     })
 
   $('.prev').click('.prev',function(e){
