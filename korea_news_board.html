@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE HTML>
+<?php session_start(); ?>
+<html>
+    <head>
+        <title>private invest</title>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="./asset/css/index.css">
+        <link rel="stylesheet" type="text/css" href="./asset/css/main.css">
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    </head>
+    <body>
+   
+        <div class="full_screen">
+            <aside>
+                <div class="jb fixed">
+                    <div class="menu_area">
+                       <div class="font-70 sdms-font">
+                        <span id="main">메인</span>
+                       </div>
+                       <div class="font-30 binggrae-font">
+                            <span id="info_news_korea">국내 뉴스 정보</span>
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            <span id="info_invest_stock">주식 정보 기록</span>
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            <span id="finance_analysis">증권사 기업 분석</span>
+                        </div>
+                       
+                    </div>
+                </div>
+            </aside>
+            <header>
+            <div class="deep-height-10p font-20 align-right">
+              
+                
+               
+                    <span id="login_plain"><?php echo $_SESSION['user_id']; ?></span><span> 로 로그인 하였습니다.</span>
+                    <button class="jb button_login" id="logout">로그아웃</button>
+                   
+                <div class="deep-height-80p font-70">
+                    <p class="binggrae-font">죽기전에 20억은 모으고 가자!!</p>
+                </div>
+                <div class="deep-height-10p">
+
+                </div>
+            </header>
+            <section>
+                <div class="container">
+
+                   <!-- 왼쪽 여백 10% -->
+                    <div class="deep-width-10p">
+
+                    </div>
+                    <!-- 가운데 공간 80% -->
+                    <div class="deep-width-80p">
+
+                    
+                        <!-- 검색 공간 -->
+                        <div class="deep-height-15p">
+                            <!-- 검색기능영역 -->
+                          
+                                <!-- 빈공간 -->
+                                <div class="empty_searching_area">
+
+                                </div>
+                                <!-- 검색 기능 -->
+                                <div class="searching_area">
+                                    <!-- 검색 종류 width 15%(drop 버튼  1.제목 , 2.날자 3.신문사)  -->
+                                    <div class="deep-width-10p dropdown">
+                                        <button class=" dropbtn" id="dropbtn">제목</button>
+                                        
+                                            <div id="droplist" class="dropdown-content">
+                                                <p id="drop_content1">제목</p>
+                                                <p id="drop_content2">날자</p>
+                                                <p id="drop_content3">신문사</p>
+                                            </div>
+
+                                    </div>
+                                    <!-- 검색 내용 width 75% -->
+                                    <div class="deep-width-80p">
+                                        <div class="input_label">
+                                            <input  class="input_text" type="text" placeholder="검색할 내용 입력" maxlength="20">
+                                        </div>
+                                          
+                                        
+                                        
+                                    </div>
+                                    <!-- 검색 버튼 10%-->
+                                    <div class="deep-width-10p">
+                                        <button class="jb searching_btn" id="searching-btn">검색</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                      
+                        <!-- 게시글 테이블 -->
+                        <div class="deep-height-80p">
+                            <!-- table형태 이미지 - 제목 -신문사/시간 -->
+                            <table class="korea_news_board">
+                                <thead class="thead">
+                                    <tr>
+                                        <!-- 즐겨 찾기 버튼 -->
+                                        <th class="favorite">
+                                            <img src="./asset/image/un_favorite.png" height="30" width="30">
+                                        </th>
+                                        <!-- 제목 -->
+                                        <th class="title">
+                                            뉴스 제목
+                                        </th>
+                                        <!-- 시간 -->
+                                        <th class="issue">
+                                            발행시간
+                                        </th>
+                                        <!-- 신문사 -->
+                                        <th class="newspaper">
+                                            발행 신문사
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="dynamicTbody">
+                                    <!-- ajax로 불러온 데이터 보여주기  -->
+                                </tbody>
+                            </table>   
+                        
+                           
+                        </div>
+                        <!-- 페이징 -->
+                        <div class="deep-height-10p">
+                            <!-- 가운데 정렬 -->
+                            <div class="searching_area" >
+                                <!-- 페이징 범위 -->
+                                <div class="paging_area">
+                                    <ul class="pagination">
+                                       
+
+                                    </ui>
+                             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 오른쪽 여백 10% -->
+                    <div class="deep-width-10p">
+
+                    </div>
+
+                </div>
+            </section>
+            <footer>
+
+            </footer>
+        </div>
+        
+
+        
+    
+        <script src="./asset/js/info_board.js"></script>
+        <script src="./asset/js/korea_news_board.js"></script>
+       
+    </body>
+</html>
