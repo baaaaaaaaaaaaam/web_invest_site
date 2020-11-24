@@ -31,7 +31,7 @@ function searching(num,category,content){
     }
     $.ajax({
         type:"GET",
-        url:"http://192.168.0.5/web/request.php",
+        url:"http://3.34.136.114/request.php",
         data : {request:'search_korea_news',num:num,category:_category,content:content},
         
         // dataType : "text/plain",
@@ -87,7 +87,7 @@ function init_paging(start_num){
 // main 페이지에서 뉴스 크롤링
     $.ajax({
         type:"GET",
-        url:"http://192.168.0.5/web/request.php",
+        url:"http://3.34.136.114/request.php",
         data : {request:'korea_news',num:start_num},
         
         // dataType : "text/plain",
@@ -117,7 +117,7 @@ function init_paging(start_num){
     // 해당 유저의 favorite list를 불러온다 
     await $.ajax({
         type:"GET",
-        url:"http://192.168.0.5/web/request.php",
+        url:"http://3.34.136.114/request.php",
         data : {request:'news_favorite_list',id:user_name},
         
         // dataType : "text/plain",
@@ -176,7 +176,7 @@ function init_paging(start_num){
         // 디비에 
         $.ajax({
             type:"GET",
-            url:"http://192.168.0.5/web/request.php",
+            url:"http://3.34.136.114/request.php",
             data : {request:'click_favorite',seq_num:seq,id:name},
             
             // dataType : "text/plain",

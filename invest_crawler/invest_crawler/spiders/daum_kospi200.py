@@ -20,7 +20,7 @@ class investSpider(scrapy.Spider):
         options.add_argument('window-size=1920x1080')
         options.add_argument("disable-gpu")
         # options.add_argument("--disable-gpu")
-        self.browser= webdriver.Chrome('/home/test/Downloads/chromedriver',chrome_options=options)
+        self.browser= webdriver.Chrome('/home/ubuntu/download/chromedriver',chrome_options=options)
 
     def parse(self,response):
         self.browser.get(response.url)

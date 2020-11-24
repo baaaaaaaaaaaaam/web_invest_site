@@ -12,7 +12,7 @@ function init_paging(start_num){
     //  db에 저장
     $.ajax({
         type:"GET",
-        url:"http://192.168.0.5/web/request.php",
+        url:"http://3.34.136.114/request.php",
         data : {request:'stock_info_list',num:start_num},
         
         // dataType : "text/plain",
@@ -94,7 +94,7 @@ function createSticky() {
         //  db에 저장
         $.ajax({
             type:"GET",
-            url:"http://192.168.0.5/web/request.php",
+            url:"http://3.34.136.114/request.php",
             data : {request:'insert_stock_info',content:_content.value,importance:_importance,id:_user_name},
             
             // dataType : "text/plain",
@@ -128,7 +128,7 @@ function deleteSticky(e) {
         console.log(_key,_user_name)
         $.ajax({
             type:"GET",
-            url:"http://192.168.0.5/web/request.php",
+            url:"http://3.34.136.114/request.php",
             data : {request:'delete_stock_info',key:_key,id:_user_name},
             
             // dataType : "text/plain",

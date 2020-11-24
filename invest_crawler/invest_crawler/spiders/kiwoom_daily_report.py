@@ -22,8 +22,8 @@ class investSpider(scrapy.Spider):
         options.add_argument('headless')
         options.add_argument('window-size=1920x1080')
         options.add_argument("disable-gpu")
-        options.add_argument("--disable-gpu")
-        self.browser= webdriver.Chrome('/home/test/Downloads/chromedriver',chrome_options=options)
+        # options.add_argument("--disable-gpu")
+        self.browser= webdriver.Chrome('/home/ubuntu/download/chromedriver',chrome_options=options)
 
     def parse(self,response):
         self.browser.get(response.url)
@@ -48,7 +48,7 @@ class investSpider(scrapy.Spider):
             print("이메일 전송 안함")
         else:
             print("기존 pdf 파일 삭제")
-            os.popen('rm -rf /home/test/git/web_invest_site/invest_crawler/*.pdf').read().strip()
+            os.popen('rm -rf /var/www/html/invest_crawler/*.pdf').read().strip()
             print("기존 pdf 파일 완료")
             print("다운로드 시작")
             check = self.browser.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[1]/td[4]/a').click()
@@ -57,7 +57,7 @@ class investSpider(scrapy.Spider):
             insert_kiwoom_daily_report(text)
             print("db에 다운로드한 파일 title 종료")
             print("이메일 전송 요청")
-            result=os.popen('auth=ansgyqja php /var/www/html/web/kiwoom_send_mail.php').read().strip()
+            result=os.popen('auth=ansgyqja php /var/www/html/kiwoom_send_mail.php').read().strip()
             print("이메일 전송 결과 :"+result)
             # 디비에 저장
         

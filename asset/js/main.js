@@ -2,7 +2,7 @@
 // main 페이지에서 뉴스 크롤링
 $.ajax({
   type:"GET",
-  url:"http://192.168.0.5/web/request.php",
+  url:"http://3.34.136.114/request.php",
   data : {request:'main_get_news'},
   
   // dataType : "text/plain",

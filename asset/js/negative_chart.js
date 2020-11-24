@@ -8,7 +8,7 @@ async function getdata(name){
     arr=[];
     await $.ajax({
         type:"GET",
-        url:"http://192.168.0.5/web/request.php",
+        url:"http://3.34.136.114/request.php",
         data : {request:'retention_rate',retention_rate_field:name},
      
         // dataType : "text/plain",
