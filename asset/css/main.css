@@ -158,6 +158,10 @@ footer{
     width: 80%; height: 40%;
     
 }
+.center_button-2 {
+    margin: 0 auto;
+    width: 20%; height: 40%;
+}
 .get_news{
     font-size: 15px;
     color: white;
@@ -338,4 +342,15 @@ ul li{
 .active{
     font-size: 25px;
     color: red;
+}
+
+
+.botton-b{
+    width: 70px;height: 40px;
+    color: white;
+   font-size: 15px;
+   text-align: center;
+   border-radius:10px;
+   border: none;
+   background-color: #080808;
 }

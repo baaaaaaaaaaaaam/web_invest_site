@@ -266,24 +266,23 @@ function news_favorite_list($id){
 
 /////////////////////////////////////////////////////주식 정보 //////////////////////////////////////////////////////////////
 // 주식정보 입력시 새로운정보를 저장하고 , 입력한정보를보여주기위해 첫페이지의 내용들을 불러온다.
-function insert_stock_info($id,$content,$importance){
+function insert_stock_info($id,$content,$importance,$title){
     require('invest_db.php');
-    $sql = "insert into stock_info(id,content,importance,date_time) value ('$id','$content','$importance',now())";
+    $sql = "insert into stock_info(id,title,content,importance,date_time) value ('$id','$title','$content','$importance',now())";
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
     if($result === false){
         return "stock_info_insert_error";
     }else{
-        $value=stock_info_list(0);
-        return $value;
+        return "ok";
     }
 }
 
 // 주식정보 입력시 새로운정보를 저장하고 , 입력한정보를보여주기위해 첫페이지의 내용들을 불러온다.
-function delete_stock_info($id,$key){
+function delete_stock_info($id,$seq){
     require('invest_db.php');
     
-    $sql = "delete from stock_info where id='$id' AND date_time='$key'";
+    $sql = "delete from stock_info where id='$id' AND seq='$seq'";
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
@@ -312,11 +311,30 @@ function stock_info_list($start_num) {
 
     while($row = mysqli_fetch_array($result)){
         $tmp_array=array('seq'=>$row['seq'],'id'=>$row['id'],'content'=>$row['content'],
-        'importance'=>$row['importance'],'date_time'=>$row['date_time']);    
+        'importance'=>$row['importance'],'date_time'=>$row['date_time'],'title'=>$row['title']);    
         array_push($content_array,$tmp_array);
     }
     $total_array=array('count' => $count,'stock_info'=>$content_array);
     return $total_array;
+}
+
+function select_stock_info($seq) {
+   
+    
+    require('invest_db.php');
+    $content_array=array();
+    $sql = "select * from stock_info where seq = '$seq'";
+    $result = mysqli_query($conn, $sql);
+
+    mysqli_close($conn);
+
+    while($row = mysqli_fetch_array($result)){
+        $tmp_array=array('seq'=>$row['seq'],'id'=>$row['id'],'content'=>$row['content'],
+        'importance'=>$row['importance'],'date_time'=>$row['date_time'],'title'=>$row['title']);    
+        array_push($content_array,$tmp_array);
+    }
+   
+    return $content_array;
 }
 /////////////////////////////////////////////////////주식 정보 //////////////////////////////////////////////////////////////
 
@@ -444,4 +462,7 @@ function finance_analysis_favorite_list($id){
 
 
 //////////////////////////////////////////////// 증권사 기업 분석 ////////////////////////////////////////////////////////////
+
+
+
 ?>

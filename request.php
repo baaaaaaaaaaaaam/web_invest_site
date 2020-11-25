@@ -166,14 +166,15 @@ if($request === "stock_info_list"){
 
 
 if ($request === "insert_stock_info"){
-    $content=$_GET['content'];
-    $importance=$_GET['importance'];
-    $id=$_GET['id'];
+    $content=$_POST['content'];
+    $title=$_POST['title'];
+    $importance=$_POST['importance'];
+    $id=$_POST['id'];
 
     if($id==null){
 
     }else{
-        $value=insert_stock_info($id,$content,$importance);
+        $value=insert_stock_info($id,$content,$importance,$title);
         $return_value=json_return($value);
         echo json_encode($return_value);
     }
@@ -181,18 +182,31 @@ if ($request === "insert_stock_info"){
 } 
 // 주식정보기록 삭제 
 if ($request === "delete_stock_info"){
-    $key=$_GET['key'];
+    $seq=$_GET['seq'];
     $id=$_GET['id'];
 
     if($id==null){
         
     }else{
-        $value=delete_stock_info($id,$key);
+        $value=delete_stock_info($id,$seq);
         $return_value=json_return($value);
         echo json_encode($return_value);
     }
-    
 } 
+
+//클릭한 주식 내용 불러오기
+if ($request === "select_stock_info"){
+    $seq=$_GET['seq'];
+
+    if($seq==null){
+        
+    }else{
+        $value=select_stock_info($seq);
+        $return_value=json_return($value);
+        echo json_encode($return_value);
+    }
+} 
+
 /////////////////////////////////////////////////////주식 정보 //////////////////////////////////////////////////////////////
 
 
@@ -250,4 +264,11 @@ if ($request === "search_finance_analysis"){
 
 
 //////////////////////////////////////////////// 증권사 기업 분석 ////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////// 텍스트 내용 입력 테스트 ////////////////////////////////////////////////////////////
+
+// finance_analysis 검색 결과 보여주기
+
+//////////////////////////////////////////////// 텍스트 내용 입력 테스트 ////////////////////////////////////////////////////////////
 ?>

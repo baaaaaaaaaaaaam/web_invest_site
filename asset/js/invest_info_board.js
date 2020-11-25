@@ -12,15 +12,13 @@ function init_paging(start_num){
     //  db에 저장
     $.ajax({
         type:"GET",
-        url:"http://3.34.136.114/request.php",
+        url:"http://54.180.155.181/request.php",
         data : {request:'stock_info_list',num:start_num},
         
         // dataType : "text/plain",
         success: function(result){
-        //  console.log(result);
             const obj = JSON.parse(result);
             
-            console.log(obj)
                 make_list(obj.stock_info);
                 make_paging(obj.count,start_num);
 
@@ -58,12 +56,6 @@ function drop_content(content_id){
 
 
 
-document.getElementById('searching-btn').onclick=function(){
-
-    createSticky();
-    
-}
-
 var stickiesArray = getStickiesArray(); 
 for (var i=0; i<stickiesArray.length; i++) { 
     var key = stickiesArray[i]; 
@@ -83,82 +75,8 @@ function getStickiesArray() {
     return stickiesArray; 
 } 
 
-function createSticky() {  
-    var _content = document.getElementsByClassName("input_text")[0]; 
-    var _importance = document.getElementById("dropbtn").innerText; 
-  
 
-    if(_importance=="중요도"){
-        alert("중요도를 선택하세요");
-    }else{
-        //  db에 저장
-        $.ajax({
-            type:"GET",
-            url:"http://3.34.136.114/request.php",
-            data : {request:'insert_stock_info',content:_content.value,importance:_importance,id:_user_name},
-            
-            // dataType : "text/plain",
-            success: function(result){
-            //  console.log(result);
-                const obj = JSON.parse(result);
-                
-                if(obj.result=="stock_info_insert_error"){
-                    alter("저장되지않았습니다")
-                }else{
-                    make_list(obj.result.stock_info);
-                    make_paging(obj.result.count,0);
-                    _content.value="";
-                    
-                }
-              
-            },
-            error: function(xhr, status, error) {
-                console.log(error);
-            }  
-        });
-    }
 
-} 
-
-function deleteSticky(e) { 
-
-    var result = confirm("정말 삭제하시겠습니까?");
-    if(result){
-        var _key = e.target.id; 
-        console.log(_key,_user_name)
-        $.ajax({
-            type:"GET",
-            url:"http://3.34.136.114/request.php",
-            data : {request:'delete_stock_info',key:_key,id:_user_name},
-            
-            // dataType : "text/plain",
-            success: function(result){
-            //  console.log(result);
-                const obj = JSON.parse(result);
-                var sticky = document.getElementById(_key); 
-                sticky.parentNode.removeChild(sticky); 
-                if(obj.result=="stock_info_insert_error"){
-                    alter("저장되지않았습니다")
-                }else{
-                    make_list(obj.result.stock_info);
-                    make_paging(obj.result.count,0);
-                    _content.value="";
-                    
-                }
-              
-            },
-            error: function(xhr, status, error) {
-                console.log(error);
-            }  
-        });
-    }else{
-        
-    }
-    
-    
-
-  
-} 
 
 function make_list(object) {
    
@@ -188,7 +106,7 @@ function make_list(object) {
         }
         var sticky = document.createElement("li"); 
         // 스티키 배열에 저장된 아이디로 찾을 수 있게 id속성에 key값을 지정 
-        sticky.setAttribute("id", object[i].date_time); 
+        sticky.setAttribute("id", object[i].seq); 
             
         // stickyObj의 color를 이용해서 CSS 배경색 스타일을 지정 
         sticky.style.backgroundColor = color; 
@@ -203,7 +121,7 @@ function make_list(object) {
         var writter_id = document.createElement("span");
         var close = document.createElement("span");
         close.setAttribute("class", "close"); 
-        close.setAttribute("id", object[i].date_time); 
+        close.setAttribute("id", object[i].seq); 
 
          // 내용 부분
         var center = document.createElement("div"); 
@@ -221,7 +139,7 @@ function make_list(object) {
         writter.innerHTML = "작성자: "
         writter_id.innerHTML=object[i].id;
         close.innerHTML="&times;"
-        span.innerHTML = object[i].content; 
+        span.innerHTML = object[i].title; 
         written_time.innerHTML="작성시간 : "
         time.innerHTML=object[i].date_time
 
@@ -246,13 +164,71 @@ function make_list(object) {
         
         // 스티키 노트를 클릭하면 삭제되도록 이벤트 리스너를 붙임 
         close.onclick = deleteSticky; 
+        span.onclick=detailSticky;
+        sticky.onclick=detailSticky;
     }
 } 
 
+function detailSticky(e){
+    var _seq;
+    if(e.target.className=="center"){
+            // center을 누르면 (div) center > (li) id 값을 불러온다
+        _seq=e.target.parentElement.id
+    }else if(e.target.className=="sticky"){
+            // 텍스트 내용을 누르면 (span)content > (div) center > (li) id 값을 불러온다
+        _seq=e.target.parentElement.parentElement.id
+    }
 
 
+    // 입력값이 1~9 사이의 문자만 처리가능하게한다
+    var reg = new RegExp('^[1-9]+');
+    var reg_result= reg.test(_seq)
+    if(reg_result){
+        location.href="http://54.180.155.181/detail_board.html?seq="+_seq;
+    }else{
+        console.log('result : '+reg_result)
+    }
+   
+}
 
 
+function deleteSticky(e) { 
+
+    var result = confirm("정말 삭제하시겠습니까?");
+    if(result){
+        var _key = e.target.id; 
+        $.ajax({
+            type:"GET",
+            url:"http://54.180.155.181/request.php",
+            data : {request:'delete_stock_info',seq:_key,id:_user_name},
+            
+            // dataType : "text/plain",
+            success: function(result){
+                const obj = JSON.parse(result);
+                var sticky = document.getElementById(_key); 
+                sticky.parentNode.removeChild(sticky); 
+                if(obj.result=="stock_info_insert_error"){
+                    alter("저장되지않았습니다")
+                }else{
+                    make_list(obj.result.stock_info);
+                    make_paging(obj.result.count,0);
+                    
+                    
+                }
+              
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }  
+        });
+    }else{
+        
+    }
+    
+    
+
+  
+} 
 
 
 
@@ -358,4 +334,6 @@ function make_paging(count,start_num){
         
 }
 
-
+document.getElementById('writing-btn').onclick= function(){
+    location.href="http://54.180.155.181/writing_board.html";
+}

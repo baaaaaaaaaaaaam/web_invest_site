@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<?php session_start(); ?>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Summernote</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./asset/css/index.css">
+        <link rel="stylesheet" type="text/css" href="./asset/css/main.css">
+      </head>
+      <body>
+        <div class="full_screen">
+            <aside>
+                <div class="jb fixed">
+                    <div class="menu_area">
+                       <div class="font-70 sdms-font">
+                        <span id="main">메인</span>
+                       </div>
+                       <div class="font-30 binggrae-font">
+                            <span id="info_news_korea">국내 뉴스 정보</span>
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            <span id="info_invest_stock">주식 정보 기록</span>
+                        </div>
+                        <div class="font-30 binggrae-font">
+                            <span id="finance_analysis">증권사 기업 분석</span>
+                        </div>
+                       
+                    </div>
+                </div>
+            </aside>
+            <header>
+            <div class="deep-height-10p font-20 align-right">
+              
+                
+               
+                    <span id="login_plain"><?php echo $_SESSION['user_id']; ?></span><span> 로 로그인 하였습니다.</span>
+                    <button class="jb button_login" id="logout">로그아웃</button>
+                   
+                <div class="deep-height-80p font-70">
+                    <p class="binggrae-font">죽기전에 20억은 모으고 가자!!</p>
+                </div>
+                <div class="deep-height-10p">
+    
+                </div>
+            </header>
+            <section>
+                <div class="container">
+    
+                   <!-- 왼쪽 여백 10% -->
+                    <div class="deep-width-10p">
+    
+                    </div>
+                    <!-- 가운데 공간 80% -->
+                    <div class="deep-width-80p">
+    
+                    
+                        <!-- 검색 공간 -->
+                        <div class="deep-height-10p">
+                            <!-- 검색기능영역 -->
+                          
+                                <!-- 빈공간 -->
+                                <div class="empty_searching_area">
+    
+                                </div>
+                                <!-- 검색 기능 -->
+                                <div class="searching_area">
+                                    <!-- 검색 종류 width 15%(drop 버튼  1.제목 , 2.날자 3.신문사)  -->
+                                    <div class="deep-width-10p dropdown">
+                                        <button class="dropbtn" id="dropbtn">중요도</button>
+                                        
+                                        <div id="droplist" class="dropdown-content">
+                                            <p id="drop_content0" onclick="drop_content(this.id)">최상</p>
+                                            <p id="drop_content1" onclick="drop_content(this.id)">상</p>
+                                            <p id="drop_content2" onclick="drop_content(this.id)">중</p>
+                                            <p id="drop_content3" onclick="drop_content(this.id)">하</p>
+                                            <p id="drop_content4" onclick="drop_content(this.id)">최하</p>
+                                        </div>
+    
+                                    </div>
+                                    <!-- 검색 내용 width 75% -->
+                                    <div class="deep-width-80p">
+                                        <div class="input_label">
+                                            <input  class="input_text" type="text" placeholder="제목입력" maxlength="20">
+                                        </div>
+                                          
+                                        
+                                        
+                                    </div>
+                                    <!-- 검색 버튼 10%-->
+                                    <div class="deep-width-10p">
+                                      
+                                    </div>
+                                </div>
+                                
+                            </div>
+                      
+                        <!-- 게시글 테이블 -->
+                        <div class="deep-height-80p">
+                            <div id="summernote"><p>Hello Summernote</p></div>
+                        </div>
+                        <!-- 페이징 -->
+                        <div class="deep-height-10p">
+                            <!-- 가운데 정렬 -->
+                            <div class="center_button-2" >
+                                <button class='botton-b' id="submit-btn">등록</button>
+                                <button class='botton-b' id="cancle-btn">취소</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- 오른쪽 여백 10% -->
+                    <div class="deep-width-10p">
+    
+                    </div>
+    
+                </div>
+            </section>
+            <footer>
+    
+            </footer>
+        </div>
+       
+        <script src="./asset/js/summer_note.js"></script>
+        <script src="./asset/js/info_board.js"></script>
+      </body>
+</html>

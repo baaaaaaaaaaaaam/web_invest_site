@@ -15,7 +15,7 @@ window.onload = function () {
             var arr=[]
             await $.ajax({
                 type:"GET",
-                url:"http://3.34.136.114/request.php",
+                url:"http://54.180.155.181/request.php",
                 data : {request:'stock_index',stock_index_field:name},
              
                 // dataType : "text/plain",

@@ -1,14 +1,17 @@
 $(document).ready(function() {
-    getdata('daum_kospi')
-    getdata('daum_kospi200')
-    getdata('daum_kosdaq')
+    getChart()
  });
 
+async function getChart(){
+   await getdata('daum_kospi')
+   await getdata('daum_kospi200')
+   await getdata('daum_kosdaq')
+ }
 async function getdata(name){
     arr=[];
     await $.ajax({
         type:"GET",
-        url:"http://3.34.136.114/request.php",
+        url:"http://54.180.155.181/request.php",
         data : {request:'retention_rate',retention_rate_field:name},
      
         // dataType : "text/plain",
