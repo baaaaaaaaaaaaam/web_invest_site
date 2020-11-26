@@ -8,7 +8,7 @@ function login_click() {
 
     $.ajax({
         type:"GET",
-        url:"http://54.180.155.181/request.php",
+        url:"http://192.168.0.10/request.php",
         data : {request:'login',id:input_id,pw:input_pw},
         
         // dataType : "text/plain",
@@ -18,7 +18,7 @@ function login_click() {
            
             var return_value=obj.result
             if(return_value=="ok"){
-                location.href="http://54.180.155.181/main.html";
+                location.href="http://192.168.0.10/main.html";
             }else if (return_value=="not permittion"){
                 alert("승인대기중 입니다");
                 
@@ -110,7 +110,7 @@ function duplicate_check_id(){
     
     $.ajax({
         type:"GET",
-        url:"http://54.180.155.181/request.php",
+        url:"http://192.168.0.10/request.php",
         data : {request:'duplicate_check_id',id:m_id.value},
         
         // dataType : "text/plain",
@@ -197,7 +197,7 @@ function reg_email(email){
 function send_mail(){
     $.ajax({
         type:"GET",
-        url:"http://54.180.155.181/request.php",
+        url:"http://192.168.0.10/request.php",
         data : {request:'send_mail',email_address:m_email.value},
         
         // dataType : "text/plain",
@@ -266,7 +266,7 @@ function enroll(){
             if(bool_check_email){
                 $.ajax({
                     type:"GET",
-                    url:"http://54.180.155.181/request.php",
+                    url:"http://192.168.0.10/request.php",
                     data : {request:'enroll',id:m_id.value,pw:m_pw.value,email_address:m_email.value},
                     
                     success: function(result){

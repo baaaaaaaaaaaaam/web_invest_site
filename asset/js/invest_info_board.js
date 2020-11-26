@@ -12,7 +12,7 @@ function init_paging(start_num){
     //  db에 저장
     $.ajax({
         type:"GET",
-        url:"http://54.180.155.181/request.php",
+        url:"http://192.168.0.10/request.php",
         data : {request:'stock_info_list',num:start_num},
         
         // dataType : "text/plain",
@@ -184,7 +184,7 @@ function detailSticky(e){
     var reg = new RegExp('^[1-9]+');
     var reg_result= reg.test(_seq)
     if(reg_result){
-        location.href="http://54.180.155.181/detail_board.html?seq="+_seq;
+        location.href="http://192.168.0.10/detail_board.html?seq="+_seq;
     }else{
         console.log('result : '+reg_result)
     }
@@ -199,7 +199,7 @@ function deleteSticky(e) {
         var _key = e.target.id; 
         $.ajax({
             type:"GET",
-            url:"http://54.180.155.181/request.php",
+            url:"http://192.168.0.10/request.php",
             data : {request:'delete_stock_info',seq:_key,id:_user_name},
             
             // dataType : "text/plain",
@@ -335,5 +335,5 @@ function make_paging(count,start_num){
 }
 
 document.getElementById('writing-btn').onclick= function(){
-    location.href="http://54.180.155.181/writing_board.html";
+    location.href="http://192.168.0.10/writing_board.html";
 }

@@ -129,7 +129,10 @@ footer{
     font-size: 35px;
     
 }
-
+.deep-width-200{
+    width: 200px;height: 100%;
+    float: right;
+}
 .deep-width-10p{
     width: 10%; height: 100%;
     float: left;
@@ -137,8 +140,10 @@ footer{
 .deep-width-80p{
     width: 80%; height: 100%;
     float: left;
-    
-    
+}
+.deep-width-90p{
+    width: 90%; height: 100%;
+    float: left;
 }
 .deep-height-15p{
     margin: 0 auto;
@@ -149,9 +154,16 @@ footer{
     margin: 0 auto;
     width: 95%; height: 70%;
 }
+.deep-height-65p{
+    margin: 0 auto;
+    width: 100%; height: 65%;
+}
+.deep-height-35p{
+    margin: 0 auto;
+    width: 100%; height: 35%;
+}
 .empty_searching_area{
-    width: 100%;height: 30%;
-    
+    width: 100%;height: 30%; 
 }
 .searching_area{
     margin: 0 auto;

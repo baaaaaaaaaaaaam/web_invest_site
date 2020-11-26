@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./asset/css/view_board.css">
     <link rel="stylesheet" type="text/css" href="./asset/css/index.css">
     <link rel="stylesheet" type="text/css" href="./asset/css/main.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -46,12 +47,66 @@
             </div>
         </header>
         <section>
-           
+            <div class="container">
+    
+                <!-- 왼쪽 여백 10% -->
+                 <div class="deep-width-10p">
+ 
+                 </div>
+                 <!-- 가운데 공간 80% -->
+                 <div class="deep-width-80p">
+                    <div class="deep-height-10p">
+                        <div class="content-wrap">
+                              <!-- 중요도 width10% -->
+                            <div class="deep-width-10p text-size-3e" id="importance">
+                                
+                            </div>
+
+                            <!-- 제목 , 작성자 , 작성시간 적는 공간 -->
+                            <div class="deep-width-90p">
+                                <!-- 제목 -->
+                                <div class="deep-height-65p text-size-2e" id="title">
+                                </div>
+
+                                <!-- 작성자, 작성시간 -->
+                                <div class="deep-height-35p text-size-1_2e">
+                                    <!-- 작성시간 -->
+                                    <div class="deep-width-200 " id="date_time">
+                                    </div>
+                                    <!-- 작성자,-->
+                                    <div class="deep-width-200" id="writer">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="deep-height-80p" style="background-color: #ffffff">
+                        <!-- 본문 -->
+                        <div class="view_summernote">
+                        </div>
+                    </div>
+
+                    <div class="deep-height-10p">
+                        <!-- 버튼 -->
+                        <div class="center_button-2" style="margin-top:20px">
+                            <button class='botton-b' id="modify-btn">수정</button>
+                            <button class='botton-b' id="delete-btn">삭제</button>
+                        </div>
+
+                    </div>
+                </div>
+                 <!-- 왼쪽 여백 10% -->
+                 <div class="deep-width-10p">
+                    
+                </div>
         </section>
         <footer>
 
         </footer>
     </div>
     <script src="./asset/js/info_board.js"></script>
+    <script src="./asset/js/detail_board.js"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@ function searching(num,category,content){
     }
     $.ajax({
         type:"GET",
-        url:"http://54.180.155.181/request.php",
+        url:"http://192.168.0.10/request.php",
         data : {request:'search_finance_analysis',num:num,category:_category,content:content},
         
         // dataType : "text/plain",
@@ -86,7 +86,7 @@ function init_paging(start_num){
 
     $.ajax({
         type:"GET",
-        url:"http://54.180.155.181/request.php",
+        url:"http://192.168.0.10/request.php",
         data : {request:'finance_analysis',num:start_num},
         
         // dataType : "text/plain",
@@ -116,7 +116,7 @@ function init_paging(start_num){
     // 해당 유저의 favorite list를 불러온다 
     await $.ajax({
         type:"GET",
-        url:"http://54.180.155.181/request.php",
+        url:"http://192.168.0.10/request.php",
         data : {request:'finance_analysis_favorite_list',id:user_name},
         
         // dataType : "text/plain",
@@ -175,7 +175,7 @@ function init_paging(start_num){
         // 디비에 
         $.ajax({
             type:"GET",
-            url:"http://54.180.155.181/request.php",
+            url:"http://192.168.0.10/request.php",
             data : {request:'click_favorite_finance_analysis',seq_num:seq,id:name},
             
             // dataType : "text/plain",

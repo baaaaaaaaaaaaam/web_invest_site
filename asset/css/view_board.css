@@ -1,0 +1,31 @@
+div .view_summernote{
+    margin:5px;
+    overflow-x: hidden;
+    overflow:scroll; 
+    width:99%; height:99%;
+    box-shadow: 5px 5px 5px 5px gray;
+}
+
+
+.deep-height-10p .content-wrap{
+    width: 100%; height: 100%;
+    background-color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+.text-size-2e {
+    font-size: 2em;
+}
+
+.text-size-1_2e {
+    font-size: 1.2em;
+}
+
+.text-size-3e {
+    font-size: 3em;
+    font-weight: 1200;
+
+}

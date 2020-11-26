@@ -322,7 +322,6 @@ function select_stock_info($seq) {
    
     
     require('invest_db.php');
-    $content_array=array();
     $sql = "select * from stock_info where seq = '$seq'";
     $result = mysqli_query($conn, $sql);
 
@@ -331,10 +330,9 @@ function select_stock_info($seq) {
     while($row = mysqli_fetch_array($result)){
         $tmp_array=array('seq'=>$row['seq'],'id'=>$row['id'],'content'=>$row['content'],
         'importance'=>$row['importance'],'date_time'=>$row['date_time'],'title'=>$row['title']);    
-        array_push($content_array,$tmp_array);
     }
    
-    return $content_array;
+    return $tmp_array;
 }
 /////////////////////////////////////////////////////주식 정보 //////////////////////////////////////////////////////////////
 
